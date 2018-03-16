@@ -1,0 +1,25 @@
+int led = 13; //Se declara que el led se encuentra en el pin 13 del arduino
+int reedswitch = 5; //se declara que el reedswich se encuentra en el pin 5 del arduino
+int buzzer =8;  // se declara que el buzzer se encientra en el pin 8 del arduino
+int val =0; // variable para almacenar el valor de la lectura
+void setup(){ // se ejecuta cada vez que el arduino se inicia
+  pinMode(led, OUTPUT); //el led esta como salida
+  pinMode(reedswitch, INPUT); //el reedswitch esta como entrada
+  pinMode(buzzer, OUTPUT); //el buzzer esta como salida
+}
+void loop(){  //se realiza un ciclo 
+  val = digitalRead(reedswitch); //lectura el valor de entrada del reedswitch
+  if (val == LOW){  //si el iman se lejos del reedswitch
+    digitalWrite(led, HIGH); //enciende el led
+    digitalWrite(buzzer, HIGH); //enciende el buzzer
+    delay(200); //indica el tiempo
+    digitalWrite(led, LOW); //se apaga el led
+    digitalWrite(buzzer, LOW); //se apaga el buzzer
+    tone(buzzer, 3000, 250); //frecuencia (3000) y duracion del sonido (250)
+    delay(200); //indica el tiempo
+    } //fin del if
+    else{ // si el iman esta cerca del reedswitch
+      digitalWrite(led, LOW); //se apaga el led
+           
+  } //fin del else
+} //fin del ciclo loop
